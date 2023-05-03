@@ -801,6 +801,21 @@ PrefabInstance:
       propertyPath: highScoreText
       value: 
       objectReference: {fileID: 1460339952}
+    - target: {fileID: 6388219677050654966, guid: 36298696a71cfc44b97f3ba4c6e7e716,
+        type: 3}
+      propertyPath: sabers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388219677050654966, guid: 36298696a71cfc44b97f3ba4c6e7e716,
+        type: 3}
+      propertyPath: sabers.Array.data[0]
+      value: 
+      objectReference: {fileID: 1582978567}
+    - target: {fileID: 6388219677050654966, guid: 36298696a71cfc44b97f3ba4c6e7e716,
+        type: 3}
+      propertyPath: sabers.Array.data[1]
+      value: 
+      objectReference: {fileID: 2010333642}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36298696a71cfc44b97f3ba4c6e7e716, type: 3}
 --- !u!1 &1460339950 stripped
@@ -1065,7 +1080,9 @@ MonoBehaviour:
   menu: {fileID: 1460339950}
   level: {fileID: 1778145846}
   gameState: 0
-  sabers: []
+  sabers:
+  - {fileID: 1582978567}
+  - {fileID: 2010333642}
   misses: 0
   maxMisses: 5
 --- !u!4 &1592727642

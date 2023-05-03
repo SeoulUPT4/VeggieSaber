@@ -65,6 +65,8 @@ public class MenuSetup : MonoBehaviour
         // FILL IN
         SetSaberLocation(sabers[0], leftStart);
         SetSaberLocation(sabers[1], rightStart);
+
+        SetScores();
     }
 
     public void SetScores()
