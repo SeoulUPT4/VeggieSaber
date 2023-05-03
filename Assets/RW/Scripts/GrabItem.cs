@@ -36,9 +36,35 @@ using UnityEngine.XR;
 public class GrabItem : MonoBehaviour
 {
     public XRNode handType;
+    GameObject other;
 
     void Update()
     {
         // FILL IN
+        bool gripDown = false;
+        InputDevice hand = InputDevices.GetDeviceAtXRNode(handType);
+        hand.TryGetFeatureValue(CommonUsages.gripButton,out gripDown);
+
+
+        //1.
+        if(gripDown)
+        {
+            //2.
+            Collider[] overlap = Physics.OverlapSphere(transform.position, 0.2f);
+
+            foreach(Collider c in overlap)
+            {
+                GameObject gameObject = c.gameObject;
+                //3.
+                if(other.GetComponent<Grabbable>())
+                {
+                    if(other.gameObject.transform.parent==null)
+                    {
+                        other.transform.SetParent(transform);
+                    }
+                }
+            }
+        }
+
     }
 }

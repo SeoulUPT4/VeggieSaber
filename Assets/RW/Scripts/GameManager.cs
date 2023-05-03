@@ -56,10 +56,36 @@ public class GameManager : MonoBehaviour
     public void Update()
     {
         // FILL IN
+        if(gameState==State.Menu&&sabers[0].transform.parent&&sabers[1].transform.parent)
+        {
+            ChangeState(State.Level);
+        }
+        if(misses>maxMisses)
+        {
+            if(score>highScore)
+            {
+                highScore = score;
+            }
+            ChangeState(State.Menu);
+        }
+
     }
 
     public void ChangeState(State state)
     {
         // FILL IN
+        gameState = state;
+        if(state==State.Menu)
+        {
+            menu.SetActive(true);
+            level.SetActive(false);
+        }
+        if(state==State.Level)
+        {
+            score = 0;
+            misses = 0;
+            menu.SetActive(false);
+            level.SetActive(true);
+        }
     }
 }

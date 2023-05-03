@@ -39,5 +39,10 @@ public class TrapMisses : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         // FILL IN
+        GameObject textMessage = Instantiate(quickMessage);
+        textMessage.transform.position = gameObject.transform.position;
+        textMessage.GetComponent<TextMeshPro>().text = "Missed!";
+
+        Destroy(other.gameObject);
     }
 }

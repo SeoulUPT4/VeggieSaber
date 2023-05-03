@@ -49,5 +49,23 @@ public class VeggieBehaviour : MonoBehaviour
     void Update()
     {
         // FILL IN
+        //1 if not using physics blah blah
+        if(rb.isKinematic)
+        {
+            dTime += Time.deltaTime;
+
+            if(dTime<1.0f)
+            {
+                Vector3 position = transform.position;
+                float z= position.z;
+                position.z = destination.z;
+
+                position = Vector3.Lerp(position, destination, dTime);
+                position.z = z;
+                transform.position = position;
+            }
+
+            transform.Translate(movement * Time.deltaTime);
+        }
     }
 }

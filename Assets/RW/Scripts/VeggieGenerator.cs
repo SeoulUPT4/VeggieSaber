@@ -68,10 +68,36 @@ public class VeggieGenerator : MonoBehaviour
     void Update()
     {
         // FILL IN
+        counter += Time.deltaTime;
+        float beatInterval = 60.0f / BPM;
+
+        if(counter>beatInterval)
+        {
+            counter = 0f;
+            if(Random.Range(0.0f,1.0f)<cutoff)
+            {
+                CreateVeggie();
+            }
+
+            cutoff += 0.01f;
+        }
     }
 
     void CreateVeggie()
     {
         // FILL IN
+        if (veggies.Length == 0)
+            return;
+
+        int randomVeggie = Random.Range(0, veggies.Length - 1);
+        GameObject veggie = Instantiate(veggies[randomVeggie]);
+        veggie.transform.position = transform.position;
+
+        int pos = Random.Range(0, 5);
+        Vector3 destination = transform.position + new Vector3(startPositions[pos, 0], startPositions[pos, 1], startPositions[pos, 2]);
+
+        VeggieBehaviour comp = (VeggieBehaviour)veggie.AddComponent(typeof(VeggieBehaviour));
+        comp.movement = new Vector3(0, 0, -6);
+        comp.destination = destination;
     }
 }

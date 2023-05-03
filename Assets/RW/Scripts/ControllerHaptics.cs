@@ -39,6 +39,20 @@ public class ControllerHaptics : MonoBehaviour
 
     public void HapticEvent()
     {
-        // FILL IN
+        //1.
+        InputDevice device = InputDevices.GetDeviceAtXRNode(hand);
+        //2.
+        HapticCapabilities capabilities;
+        if(device.TryGetHapticCapabilities(out capabilities))
+        {
+            if(capabilities.supportsImpulse)
+            {
+                uint channel = 0;
+                float amplitude = 0.5f;
+                float duration = 0.1f;
+                //3.
+                device.SendHapticImpulse(channel, amplitude, duration);
+            }
+        }
     }
 }
